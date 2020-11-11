@@ -25,12 +25,27 @@
         <br>
         <h3>Submit a new issue:</h3>
         <form id="newIssue" method="post" action="/api/">
-          <input type="text" name="issue_title" placeholder="*Title" style="width: 320px; margin-bottom: 3px;" required=''><br>
-          <textarea type="text" name="issue_text" placeholder="*Text" style="width: 320px; height: 100px;" required=''></textarea><br>
-          <input type="text" name="created_by" placeholder="*Created by" style="width: 100px" required=''>
-          <input type="text" name="assigned_to" placeholder="(opt)Assigned to" style="width: 100px">
-          <input type="text" name="status_text" placeholder="(opt)Status text" style="width: 100px"><br>
-          <button type="submit">Submit Issue</button>
+          <div class="md-form">
+            <input type='text' id='form-4-issue-title' name='issue_title' required='' class="form-control">
+            <label for='form-4-issue-title'>*Title</label>
+          </div>
+          <div class="md-form">
+            <textarea type='text' id='form-4-issue-text' name='issue_text' required='' class="md-textarea form-control"></textarea>
+            <label for='form-4-issue-text'>*Text</label>
+          </div>
+          <div class="md-form">
+            <input type='text' id='form-4-created-by' name='created_by' required='' class="form-control">
+            <label for='form-4-created-by'>*Created By</label>
+          </div>
+          <div class="md-form">
+            <input type='text' id='form-4-assigned-to' name='assigned_to' class="form-control">
+            <label for='form-4-assigned-to'>Assigned To (Optional)</label>
+          </div>
+          <div class="md-form">
+            <input type='text' id='form-4-status-text' name='status_text' class="form-control">
+            <label for='form-4-status-text'>Status Text (Optional)</label>
+          </div>
+          <button type="submit" class="btn btn-success">Submit Issue</button>
         </form>
       </div>
       

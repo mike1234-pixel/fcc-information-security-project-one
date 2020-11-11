@@ -5,17 +5,30 @@
 
 body {
   padding: 10px;
+  background-image: url("./images/background.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 .issue {
   margin: 20px;
   padding: 5px;
   width: 60%;
-  border: 2px solid black;
+  /* border: 2px solid black; */
+  background-image: url("./images/open.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 .closed {
-  background-color: lightgrey;
+  /* background-color: lightgrey; */
+  background-image: url("./images/closed.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  color: white;
 }
 
 .id {
