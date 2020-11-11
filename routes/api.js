@@ -1,4 +1,4 @@
-'use strict';
+// 'use strict';
 
 // sort out the redirects, add some tests and style
 
