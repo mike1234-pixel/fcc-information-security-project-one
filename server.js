@@ -28,9 +28,6 @@ app.route('/')
     res.sendFile(process.cwd() + '/views/index.html');
   });
 
-//For FCC testing purposes
-fccTestingRoutes(app);
-
 //Routing for API 
 apiRoutes(app);  
     
