@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Welcome to HyperDev!</title>
+    <meta name="description" content="A cool thing made with HyperDev">
+    <link id="favicon" rel="icon" href="https://hyperdev.com/favicon-app.ico" type="image/x-icon">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
+    <!-- Local CSS -->
+    <link rel="stylesheet" href="/public/style.css">
+  </head>
+  <body>
+    <header>
+      <h1>
+        ISQA_4 - Issue Tracker
+      </h1>
+    </header>
+    <div>
+      <p>Add projects and issues using form 1. Update issues by specifying the project name and issue id in form 2, and update your chosen fields. Delete your issue using form 3 by providing the project name and issue id.</p>
+      <p>To see a project and all its issues enter /{projectname}/ into the url.</p>
+    </div>
+    <hr style='margin: 50px'>
+    <div id='testui' style='margin-left: 5%' class="center">
+      <h2 style="text-align: left">API Tests:</h2>
+      <h3>Specify your project and submit an issue for that project (if project does not already exist one will be created)</h3>
+      <!-- <form id="testForm" class="border"> -->
+        <form>
+
+        <!-- <div class="md-form">
+          <input type='text' id='issue-project' name='issue_project' required='' class="form-control" mdbInput>
+          <label for='issue-project'>*Project</label>
+        </div>
+        <div class="md-form">
+          <input type='text' id='issue-title' name='issue_title' required='' class="form-control" mdbInput>
+          <label for='issue-title'>*Title</label>
+        </div>
+        <div class="md-form">
+          <textarea type='text' id='issue-text' name='issue_text' required='' class="md-textarea form-control" mdbInput></textarea>
+          <label for='issue-text'>*Text</label>
+        </div>
+        <div class="md-form">
+          <input type='text' id='created-by' name='created_by' required='' class="form-control" mdbInput>
+          <label for='created-by'>*Created By</label>
+        </div>
+        <div class="md-form">
+          <input type='text' id=assigned-to' name='assigned_to' class="form-control" mdbInput>
+          <label for=assigned-to'>Assigned To (Optional)</label>
+        </div>
+        <div class="md-form">
+          <input type='text' id=status-text' name='status_text' class="form-control" mdbInput>
+          <label for=status-text'>Status Text (Optional)</label>
+        </div>
+        <button type="submit" value="Submit" class="btn btn-success">Submit Issue</button> -->
+
+
+
+         <input type="text" name="issue_project" placeholder="project" required="true"> 
+         <input type="text" name="issue_title" placeholder="*Title" style="width: 100px" required=''><br> 
+         <textarea type="text" name="issue_text" placeholder="*Text" style="width: 100px" required=''></textarea><br> 
+         <input type="text" name="created_by" placeholder="*Created by" style="width: 100px" required=''><br> 
+         <input type="text" name="assigned_to" placeholder="(opt)Assigned to" style="width: 100px"><br> 
+         <input type="text" name="status_text" placeholder="(opt)Status text" style="width: 100px"><br> 
+         <button type="submit">Submit Issue</button> 
+      </form><br>
+      <h3>Specify your project and update an issue on that project (Change any or all to update issue on the _id supplied)</h3>
+      <form id="testForm2" class="border">
+        <input type="text" name="issue_project" placeholder="project" required="true">
+        <input type="text" name="_id" placeholder="*_id" style="width: 100px" required=''><br>
+        <input type="text" name="issue_title" placeholder="(opt)Title" style="width: 100px"><br>
+        <textarea type="text" name="issue_text" placeholder="(opt)Text" style="width: 100px"></textarea><br>
+        <input type="text" name="created_by" placeholder="(opt)Created by" style="width: 100px"><br>
+        <input type="text" name="assigned_to" placeholder="(opt)Assigned to" style="width: 100px"><br>
+        <input type="text" name="status_text" placeholder="(opt)Status text" style="width: 100px"><br>
+        <label><input type="checkbox" name="open" value=false> Check to close issue</label><br>
+        <button type="submit">Submit Issue</button>
+      </form><br>
+      <h3>Delete issue on specified project</h3>
+      <form id="testForm3" class="border">
+        <input type="text" name="issue_project" placeholder="project" required="true">
+        <input type="text" name="_id" placeholder="_id" style="width: 100px" required=''><br>
+        <button type="submit">Delete Issue</button>
+      </form>
+      <code id='jsonResult'></code>
+    </div>
+    <hr style='margin: 50px; margin-top: 200px'>
+    <!-- Your web-app is https, so your scripts need to be too -->
+    <script src="https://code.jquery.com/jquery-2.2.1.min.js"
+            integrity="sha256-gvQgAFzTH6trSrAWoH1iPo9Xc96QxSZ3feW6kem+O00="
+            crossorigin="anonymous"></script>
+    <script>
+      $(function() {
+        $('#testForm').submit(function(e) {
+          let issueProject = $(this).serializeArray()[0].value;
+          $.ajax({
+            url: '/api/issues/' + issueProject,
+            type: 'post',
+            data: $('#testForm').serialize(),
+            success: function(data) {
+              $('#jsonResult').text(JSON.stringify(data));
+            }
+          })
+         
+          e.preventDefault();
+          
+        })
+        $('#testForm2').submit(function(e) {
+          let issueProject = $(this).serializeArray()[0].value;
+          $.ajax({
+            url: '/api/issues/' + issueProject,
+            type: 'put',
+            data: $('#testForm2').serialize(),
+            success: function(data) {
+              $('#jsonResult').text(JSON.stringify(data));
+            }
+          });
+          e.preventDefault();
+        });
+        $('#testForm3').submit(function(e) {
+          let issueProject = $(this).serializeArray()[0].value;
+          $.ajax({
+            url: '/api/issues/' + issueProject,
+            type: 'delete',
+            data: $('#testForm3').serialize(),
+            success: function(data) {
+              $('#jsonResult').text(JSON.stringify(data));
+            }
+          });
+          e.preventDefault();
+        });
+      });
+   </script>
+    <!-- JQuery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script>
+  </body>
+</html>
