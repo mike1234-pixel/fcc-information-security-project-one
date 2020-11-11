@@ -34,3 +34,10 @@ body {
 .id {
   font-size: 10.5px;
 }
+
+#testForm,
+#testForm2,
+#testForm3,
+#newIssue {
+  padding: 20px;
+}
