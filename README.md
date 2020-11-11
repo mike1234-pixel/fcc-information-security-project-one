@@ -1,8 +1,8 @@
 ## **FreeCodeCamp**- Information Security and Quality Assurance
 
-[![Run on Repl.it](https://repl.it/badge/github/freeCodeCamp/boilerplate-project-issuetracker)](https://repl.it/@MichaelTandy/Issue-Tracker)
-
 # Project Issue Tracker
+
+[![issue-tracker-screenshot](https://user-images.githubusercontent.com/57681651/98866309-a3e5ad80-2464-11eb-8e6e-6ff38fe5ee7d.JPG)](https://issue-tracker-11.herokuapp.com/)
 
 ## User Stories
 
@@ -17,3 +17,5 @@
 ## Libraries
 
 This project uses _Node.js, express, mongoose_ and _mongodb_, and _jQuery_ on the frontend.
+
+[Submit an issue!](https://issue-tracker-11.herokuapp.com/)
